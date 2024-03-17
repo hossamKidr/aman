@@ -1,0 +1,73 @@
+name: aman_app
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+
+  cupertino_icons: ^1.0.2
+  flutter_bloc: ^8.1.4
+  flutter_screenutil: ^5.9.0
+  flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  get_it: ^7.6.7
+  intl: ^0.19.0
+  flutter_riverpod: ^2.5.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+
+  assets:
+     - assets/svg/search.svg
+     - assets/svg/clipboard.svg
+     - assets/svg/setting.svg
+     - assets/svg/home.svg
+     - assets/svg/car.svg
+     - assets/svg/delete.svg
+     - assets/svg/pencil.svg
+     - assets/svg/add.svg
+     - assets/svg/edit.svg
+     - assets/svg/stiker.svg
+     - assets/svg/coming_soon_victor.svg
+     - assets/svg/done.svg
+     - assets/png/empty_box.png
+
+
+
+  fonts:
+     - family: GE SS Two
+       fonts:
+        - asset: assets/fonts/GESSBold.otf
+          weight: 700
+        - asset: assets/fonts/GESSLight.otf
+          weight: 300
+        - asset: assets/fonts/GESSMEDIUM.otf
+          weight: 500
+
+
+

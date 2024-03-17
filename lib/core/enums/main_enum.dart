@@ -1,0 +1,17 @@
+enum MainStatus{
+  initial,
+  error,
+  loading,
+  success,
+  changeBottomNavBarItem,
+   chaneCarType,
+  getAllPosterSuccess,
+  addPosterSuccess,
+  deletePosterSuccess,
+  updeatPosterSuccess,
+  getAllPosterLoading,
+  addPosterLoading,
+  deletePosterLoading,
+  updeatPosterLoading,
+  isDone,
+}
