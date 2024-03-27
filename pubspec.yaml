@@ -26,6 +26,11 @@ dependencies:
   get_it: ^7.6.7
   intl: ^0.19.0
   flutter_riverpod: ^2.5.1
+  screenshot: ^2.3.0
+  image_gallery_saver: ^2.0.3
+  permission_handler: ^11.3.0
+  share_plus:
+  path_provider:
 
 
 dev_dependencies:
@@ -60,14 +65,17 @@ flutter:
 
 
   fonts:
-     - family: GE SS Two
+     - family: Cairo
        fonts:
-        - asset: assets/fonts/GESSBold.otf
+        - asset: assets/fonts/Cairo-Bold.ttf
           weight: 700
-        - asset: assets/fonts/GESSLight.otf
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Cairo-Light.ttf
           weight: 300
-        - asset: assets/fonts/GESSMEDIUM.otf
+        - asset: assets/fonts/Cairo-Medium.ttf
           weight: 500
-
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 400
 
 

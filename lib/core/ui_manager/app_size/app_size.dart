@@ -17,5 +17,6 @@ class AppSize{
   static double s80 = 80.0.sp;
   static double s307 = 307.0.sp;
   static double s300 = 300.0.sp;
+  static double s250 = 270.0.sp;
 
 }

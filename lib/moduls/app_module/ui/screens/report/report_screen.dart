@@ -1,18 +1,13 @@
-import 'package:aman_app/core/constants/app_strings.dart';
-import 'package:aman_app/core/ui_manager/app_colors.dart';
-import 'package:aman_app/core/ui_manager/app_size/app_height.dart';
+import 'package:aman_app/core/functions/app_functions.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_padding.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_size.dart';
-import 'package:aman_app/core/ui_manager/svg_icons.dart';
-import 'package:aman_app/moduls/app_module/ui/screens/report/providers/providers.dart';
 import 'package:aman_app/moduls/app_module/ui/screens/report/widgets/report_sheet.dart';
 import 'package:aman_app/moduls/app_module/ui/screens/report/widgets/report_text.dart';
 import 'package:aman_app/moduls/app_module/ui/screens/report/widgets/send_report_button.dart';
 import 'package:aman_app/moduls/app_module/ui/screens/report/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:screenshot/screenshot.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -20,6 +15,7 @@ class ReportScreen extends StatefulWidget {
   @override
   State<ReportScreen> createState() => _ReportScreenState();
 }
+
 var governorateNameController = TextEditingController();
 var unitNameController = TextEditingController();
 var employeeNameController = TextEditingController();
@@ -34,6 +30,8 @@ var numberOfTuktuksController = TextEditingController();
 var startOfSerialNumberController = TextEditingController();
 var endOfSerialNumberController = TextEditingController();
 var totalController = TextEditingController();
+ScreenshotController screenshotController = ScreenshotController();
+
 class _ReportScreenState extends State<ReportScreen> {
   @override
   Widget build(BuildContext context) {
@@ -196,52 +194,61 @@ class _ReportScreenState extends State<ReportScreen> {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialog(
-                            child: ReportSheet(
-                              texts: [
-                                ReportText(
-                                  text: governorateNameController.text,
-                                ),
-                                ReportText(
-                                  text: unitNameController.text,
-                                ),
-                                ReportText(
-                                  text: employeeNameController.text,
-                                ),
-                                ReportText(
-                                  text: presenceController.text,
-                                ),
-                                ReportText(
-                                  text: departureController.text,
-                                ),
-                                ReportText(
-                                  text: activationController.text,
-                                ),
-                                ReportText(
-                                  text: deliveryController.text,
-                                ),
-                                ReportText(
-                                  text: notDeliveryController.text,
-                                ),
-                                ReportText(
-                                  text: carNumbersController.text,
-                                ),
-                                ReportText(
-                                  text: numberOfMotorcycleController.text,
-                                ),
-                                ReportText(
-                                  text: numberOfTuktuksController.text,
-                                ),
-                                ReportText(
-                                  text: startOfSerialNumberController.text,
-                                ),
-                                ReportText(
-                                  text: endOfSerialNumberController.text,
-                                ),
-                                ReportText(
-                                  text: totalController.text,
-                                ),
-                              ],
+                          return Screenshot(
+                            controller: screenshotController,
+                            child: Dialog(
+                              child: ReportSheet(
+                                onPressedScreenShot: () async {
+                                  final image =
+                                      await screenshotController.capture();
+                                  AppFunctions.saveImage(image!);
+                                  AppFunctions.saveAndShare(image);
+                                },
+                                texts: [
+                                  ReportText(
+                                    text: governorateNameController.text,
+                                  ),
+                                  ReportText(
+                                    text: unitNameController.text,
+                                  ),
+                                  ReportText(
+                                    text: employeeNameController.text,
+                                  ),
+                                  ReportText(
+                                    text: presenceController.text,
+                                  ),
+                                  ReportText(
+                                    text: departureController.text,
+                                  ),
+                                  ReportText(
+                                    text: activationController.text,
+                                  ),
+                                  ReportText(
+                                    text: deliveryController.text,
+                                  ),
+                                  ReportText(
+                                    text: notDeliveryController.text,
+                                  ),
+                                  ReportText(
+                                    text: carNumbersController.text,
+                                  ),
+                                  ReportText(
+                                    text: numberOfMotorcycleController.text,
+                                  ),
+                                  ReportText(
+                                    text: numberOfTuktuksController.text,
+                                  ),
+                                  ReportText(
+                                    text: startOfSerialNumberController.text,
+                                  ),
+                                  ReportText(
+                                    text: endOfSerialNumberController.text,
+                                  ),
+                                  ReportText(
+                                    text: totalController.text,
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         });
@@ -255,8 +262,3 @@ class _ReportScreenState extends State<ReportScreen> {
     );
   }
 }
-
-
-
-
-

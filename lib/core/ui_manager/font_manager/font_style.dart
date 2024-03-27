@@ -4,12 +4,11 @@ import '../../constants/constants.dart';
 import '../app_size/app_font_size.dart';
 import 'font_weight.dart';
 
-
 TextStyle _getTextStyle(
-    double? fontSize,
-    FontWeight fontWeight,
-    Color color,
-    ) {
+  double? fontSize,
+  FontWeight fontWeight,
+  Color color,
+) {
   return TextStyle(
       fontSize: fontSize ?? AppFontSize.f12,
       fontWeight: fontWeight,
@@ -17,7 +16,6 @@ TextStyle _getTextStyle(
       color: color);
 }
 
-// light style
 TextStyle getLightStyle({
   double? fontSize,
   required Color color,
@@ -29,8 +27,17 @@ TextStyle getLightStyle({
   );
 }
 
+TextStyle getRegularStyle({
+  double? fontSize,
+  required Color color,
+}) {
+  return _getTextStyle(
+    fontSize,
+    AppFontWeight.regular,
+    color,
+  );
+}
 
-// medium style
 TextStyle getMediumStyle({
   double? fontSize,
   required Color color,
@@ -42,8 +49,17 @@ TextStyle getMediumStyle({
   );
 }
 
+TextStyle getSemiBoldStyle({
+  double? fontSize,
+  required Color color,
+}) {
+  return _getTextStyle(
+    fontSize,
+    AppFontWeight.semiBold,
+    color,
+  );
+}
 
-// bold style
 TextStyle getBoldStyle({
   double? fontSize,
   required Color color,

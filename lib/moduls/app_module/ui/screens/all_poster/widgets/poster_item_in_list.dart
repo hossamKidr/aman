@@ -1,11 +1,13 @@
 import 'package:aman_app/core/extensions/extensions.dart';
 import 'package:aman_app/core/router/routse_name.dart';
 import 'package:aman_app/core/ui_manager/app_colors.dart';
+import 'package:aman_app/core/ui_manager/app_size/app_font_size.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_height.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_margin.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_padding.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_radius.dart';
 import 'package:aman_app/core/ui_manager/app_size/app_size.dart';
+import 'package:aman_app/core/ui_manager/font_manager/font_style.dart';
 import 'package:aman_app/core/ui_manager/svg_icons.dart';
 import 'package:aman_app/di.dart';
 import 'package:aman_app/moduls/app_module/ui/screens/home/cubit/cubit.dart';
@@ -27,8 +29,9 @@ class PosterItemInList extends StatelessWidget {
   final String searulNumber;
   final String carType;
   final int index;
+  final int ind;
 
-   PosterItemInList(
+  PosterItemInList(
       {super.key,
       required this.carNumber,
       required this.char1,
@@ -37,13 +40,16 @@ class PosterItemInList extends StatelessWidget {
       required this.clintPhoneNumber,
       required this.searulNumber,
       required this.carType,
-      required this.index});
+      required this.index,
+      required this.ind});
+
   TextEditingController characterController1 = TextEditingController();
   TextEditingController characterController2 = TextEditingController();
   TextEditingController characterController3 = TextEditingController();
   TextEditingController numberOfCarController = TextEditingController();
   TextEditingController surrealThePosterController = TextEditingController();
   TextEditingController clintPhoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -62,42 +68,55 @@ class PosterItemInList extends StatelessWidget {
             color: AppColors.gray.withOpacity(0.2),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: AppPadding.p5),
-              child: Row(
-                children: [
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('رقم المركبه'),
-                      Text('تليفون العميل'),
-                      Text('رقم السريال'),
-                      Text('نوع المركبه'),
-                    ],
+              child: Stack(children: [
+                Row(
+                  children: [
+                    const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('رقم المركبه'),
+                        Text('تليفون العميل'),
+                        Text('رقم السريال'),
+                        Text('نوع المركبه'),
+                      ],
+                    ),
+                    Gap(AppSize.s20),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(char1),
+                            Gap(AppSize.s5),
+                            Text(char2),
+                            Gap(AppSize.s5),
+                            Text(char3),
+                            Gap(AppSize.s5),
+                            Text(carNumber),
+                          ],
+                        ),
+                        Text(clintPhoneNumber),
+                        Text(searulNumber),
+                        Text(carType),
+                      ],
+                    ),
+                  ],
+                ),
+                PositionedDirectional(
+                  end: 0,
+                  top: AppSize.s15,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.primary,
+                    child: Text(
+                      '${ind+1}',
+                      style: getSemiBoldStyle(
+                          color: AppColors.white, fontSize: AppFontSize.f14),
+                    ),
                   ),
-                  Gap(AppSize.s20),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(char1),
-                          Gap(AppSize.s5),
-                          Text(char2),
-                          Gap(AppSize.s5),
-                          Text(char3),
-                          Gap(AppSize.s5),
-                          Text(carNumber),
-                        ],
-                      ),
-                      Text(clintPhoneNumber),
-                      Text(searulNumber),
-                      Text(carType),
-                    ],
-                  ),
-
-                ],
-              ),
+                ),
+              ]),
             ),
           ),
         ),

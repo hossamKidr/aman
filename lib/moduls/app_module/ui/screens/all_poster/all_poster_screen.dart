@@ -108,7 +108,7 @@ class _AllPosterScreenState extends State<AllPosterScreen> {
                         crossAxisEndOffset: 0.3,
                         direction: DismissDirection.horizontal,
                         // dragStartBehavior: DragStartBehavior.start,
-                        resizeDuration: const Duration(milliseconds: 400),
+                        resizeDuration: const Duration(milliseconds: 200),
                         background: Container(
                             height: AppHeight.h25,
                             width: AppWidth.w20,
@@ -152,9 +152,9 @@ class _AllPosterScreenState extends State<AllPosterScreen> {
                             )),
                         onDismissed: (direction) {
                           if (direction == DismissDirection.startToEnd) {
-                            setState(() {
+
                               context.read<HomeCubit>().deletePoster(index);
-                            });
+
                           }
                           if (direction == DismissDirection.endToStart) {
 
@@ -205,6 +205,7 @@ class _AllPosterScreenState extends State<AllPosterScreen> {
                         },
                         key: UniqueKey(),
                         child: PosterItemInList(
+                          ind: index,
                           index: index,
                           carNumber: state.posters![index].numberOfCar,
                           char1: state.posters![index].character1,

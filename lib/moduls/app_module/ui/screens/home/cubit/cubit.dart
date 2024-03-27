@@ -75,6 +75,7 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(state.copyWith(mainStatus: MainStatus.updeatPosterLoading));
     try {
       await appRepository.updatePoster(index, poster);
+      getAllPosters();
       emit(state.copyWith(mainStatus: MainStatus.updeatPosterSuccess));
     } catch (e) {
       emit(state.copyWith(mainStatus: MainStatus.error));
@@ -85,6 +86,7 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(state.copyWith(mainStatus: MainStatus.deletePosterLoading));
     try {
       await appRepository.deletePoster(index);
+      getAllPosters();
       emit(state.copyWith(mainStatus: MainStatus.deletePosterSuccess));
       //getAllPosters();
     } catch (e) {
